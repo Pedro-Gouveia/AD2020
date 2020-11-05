@@ -22,13 +22,18 @@ public class Main {
 
         char plus = '+';
 
+        /*
         System.out.println(MatrixUtilities.show(matrix));
         System.out.println(MatrixUtilities.isMatrix(matrix));
         System.out.println(MatrixUtilities.isIdentity(matrix2));
-        //System.out.println(MatrixUtilities.multiplyBy(matrix, 2));
+        System.out.println(MatrixUtilities.multiplyBy(matrix, 2));
         System.out.println(MatrixUtilities.areCompatibleForSum(matrix, matrix3));
         System.out.println(MatrixUtilities.sumOf(matrix, matrix3));
+        */
 
-        System.out.println(CharacterDrawingUtilities.drawElement(plus));
+        //System.out.println(CharacterDrawingUtilities.drawElement('+'));
+        //System.out.println(CharacterDrawingUtilities.drawHorizontalSegmentWith('+', 10));
+        //System.out.println(CharacterDrawingUtilities.drawFilledRectangleWith('+', 5, 10));
+        System.out.println(CharacterDrawingUtilities.drawEmptyRectangleWith('+', 5, 10));
     }
 }
