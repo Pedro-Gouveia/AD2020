@@ -58,14 +58,10 @@ public class Rectangle {
 
 
     public boolean containsPoint(Point p2){
-        if (
-        //se p2(x) < topLeftPoint(x) ou p2(x) > topLeftPoint(x) + width
-        ){
+        if (p2.getX() < topLeftPoint.getX() || p2.getX() > topLeftPoint.getX() + width) {
             return false;
         }
-        else if(
-        // se p2(y) > topLeftPoint(y) ou p2(y) < topLeftPoint(y) - height
-        ){
+        else if( p2.getY() > topLeftPoint.getY() || p2.getY() < topLeftPoint.getY() - height){
             return false;
         }
         return true;

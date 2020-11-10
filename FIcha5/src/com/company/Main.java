@@ -52,6 +52,9 @@ public class Main {
         double perimeter = r.calcPerimeter();
         System.out.println(perimeter);
 
-        Point p2 = new Point(2,3);
+        Point p2 = new Point(6,4);
+        boolean containsPoint = r.containsPoint(p2);
+        System.out.println(containsPoint);
+
     }
 }
