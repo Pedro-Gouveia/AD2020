@@ -1,6 +1,6 @@
-package com.company;
+package pt.uma.tpsi;
 
-public class Rectangle {
+public class Rectangle extends Shape {
 
     //atributos
     private Point topLeftPoint;
@@ -12,6 +12,16 @@ public class Rectangle {
         topLeftPoint = new Point();
         height = 0.0;
         width = 0.0;
+    }
+
+    @Override
+    public double getArea() {
+        return calcArea();
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 0;
     }
 
     //construtor com parametros
