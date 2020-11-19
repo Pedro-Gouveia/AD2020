@@ -3,7 +3,7 @@ package pt.uma.tpsi;
 import java.awt.*;
 
 public abstract class Shape {
-    private Point position;
+    protected Point position;
 
     public Shape(){
         position = new Point();

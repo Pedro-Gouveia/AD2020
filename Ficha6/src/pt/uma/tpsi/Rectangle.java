@@ -21,7 +21,7 @@ public class Rectangle extends Shape {
 
     @Override
     public double getPerimeter() {
-        return 0;
+        return calcPerimeter();
     }
 
     //construtor com parametros
@@ -61,6 +61,8 @@ public class Rectangle extends Shape {
     public double calcArea(){
         return width * height;
     }
+
+
 
     public double calcPerimeter(){
         return (width + height) * 2;

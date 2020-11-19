@@ -5,11 +5,12 @@ public class Circle extends Shape{
     private double radius;
 
     public Circle(){
-        radius = 0.0;
+        super();
     }
 
-    public Circle (final double radius){
+    public Circle (final double radius, Point position){
         this.radius = radius;
+        this.position = position;
     }
 
     public double getRadius() {
