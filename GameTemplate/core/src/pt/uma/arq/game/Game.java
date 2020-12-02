@@ -19,6 +19,11 @@ public class Game extends ApplicationAdapter {
     private PlayerShip player;
     private SmallShip smallShip;
     private Fleet fleet;
+    private int health;
+
+    public int getHealth() {
+        return health;
+    }
 
     @Override
     public void create() {
@@ -49,7 +54,7 @@ public class Game extends ApplicationAdapter {
         batch.begin();
         // PLACE RENDERS HERE
         backgroundManagement.render();
-        font.draw(batch, "HEALTH: ", 420, 780);
+        font.draw(batch, "HEALTH: " + getHealth(), 420, 780);
         player.render();
         smallShip.render();
 

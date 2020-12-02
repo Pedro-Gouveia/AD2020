@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pt.uma.arq.game.Animator;
 
 public class PlayerShip extends Ship{
-    private int health;
 
     public PlayerShip(SpriteBatch batch){
         animator = new Animator(batch, "ship.png", 5, 2);
@@ -20,10 +19,6 @@ public class PlayerShip extends Ship{
 
     public void render(){
         animator.render(x, y);
-    }
-
-    public int getHealth() {
-        return health;
     }
 
     public void handleInput(){
