@@ -9,7 +9,9 @@ public class Laser {
     protected int x;
     protected int y;
 
-    public Laser(SpriteBatch batch){
+    public Laser(int x, int y, SpriteBatch batch){
+        this.x = x;
+        this.y = y;
         animator = new Animator(batch, "laser-bolts.png", 2, 2);
     }
 
@@ -19,6 +21,12 @@ public class Laser {
 
     public void render(){
         animator.render(x,y);
+        y+=10;
+    }
+
+    public void renderEnemy(){
+        animator.render(x,y);
+        y-=10;
     }
 
 }

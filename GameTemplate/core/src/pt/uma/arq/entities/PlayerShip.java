@@ -5,13 +5,23 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pt.uma.arq.game.Animator;
 
+import java.util.ArrayList;
+
 public class PlayerShip extends Ship{
 
+
+    public ArrayList<Laser> lasers;
+    SpriteBatch batch;
+
     public PlayerShip(SpriteBatch batch){
+        this.batch = batch;
         animator = new Animator(batch, "ship.png", 5, 2);
         x = 300;
         y = 50;
+        this.lasers = new ArrayList<Laser>();
     }
+
+
 
     public void create(){
         animator.create();
@@ -19,6 +29,9 @@ public class PlayerShip extends Ship{
 
     public void render(){
         animator.render(x, y);
+        for (Laser laser: lasers) {
+            laser.render();
+        }
     }
 
     public void handleInput(){
@@ -36,8 +49,11 @@ public class PlayerShip extends Ship{
             }
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+            Laser laser = new Laser(x, y, batch);
+            laser.create();
+            lasers.add(laser);
         }
+
     }
 }

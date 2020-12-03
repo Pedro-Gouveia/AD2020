@@ -15,7 +15,6 @@ public abstract class Ship {
     protected Rectangle boundingBox;
 
     public Ship(){
-        animator = new Animator();
         x = 0;
         y = 0;
         attackValue = 0;
@@ -24,12 +23,18 @@ public abstract class Ship {
     }
 
     // constructor
-    public Ship(Animator animator, int x, int y, int attackValue, boolean collided, Rectangle boundingBox){
-        this.animator = animator;
+    public Ship(int x, int y, int attackValue){
         this.x = x;
         this.y = y;
         this.attackValue = attackValue;
-        this.collided = collided;
-        this.boundingBox = boundingBox;
+        this.collided = false;
+    }
+
+    public void create(){
+        animator.create();
+    }
+
+    public void render(){
+        animator.render(x,y);
     }
 }

@@ -5,16 +5,9 @@ import pt.uma.arq.game.Animator;
 
 public class LargeShip extends Ship{
 
-    public LargeShip(SpriteBatch batch){
+    public LargeShip(int x, int y, int attackValue, SpriteBatch batch){
+        super(x,y,attackValue);
         animator = new Animator(batch, "enemy-big.png", 2, 1);
-        attackValue = 20;
     }
 
-    public void create(){
-        animator.create();
-    }
-
-    public void render(){
-        animator.render(x,y);
-    }
 }

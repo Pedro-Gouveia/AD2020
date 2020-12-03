@@ -5,24 +5,35 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import pt.uma.arq.entities.Fleet;
-import pt.uma.arq.entities.PlayerShip;
-import pt.uma.arq.entities.SmallShip;
+import jdk.internal.icu.util.CodePointTrie;
+import pt.uma.arq.entities.*;
 
 public class Game extends ApplicationAdapter {
     private SpriteBatch batch;
 
     private BackgroundManagement backgroundManagement;
     private BitmapFont font;
-    private Animator animator;
 
     private PlayerShip player;
-    private SmallShip smallShip;
     private Fleet fleet;
     private int health;
+    private int score;
+    //private Laser laser;
 
     public int getHealth() {
         return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     @Override
@@ -36,11 +47,17 @@ public class Game extends ApplicationAdapter {
 
         backgroundManagement = new BackgroundManagement(batch);
 
+        setHealth(100);
+        setScore(0);
+
         player = new PlayerShip(batch);
         player.create();
 
-        smallShip = new SmallShip(batch);
-        smallShip.create();
+        fleet = new Fleet(batch);
+        fleet.create();
+
+        //laser = new Laser(batch);
+        //laser.create();
 
     }
 
@@ -55,12 +72,20 @@ public class Game extends ApplicationAdapter {
         // PLACE RENDERS HERE
         backgroundManagement.render();
         font.draw(batch, "HEALTH: " + getHealth(), 420, 780);
+        font.draw(batch, "SCORE: " + getScore(), 10, 780);
+
+        /*
+        if (health <= 0){
+            font.draw(batch, "YOU LOST!" , 300, 400);
+        }
+        */
+
         player.render();
-        smallShip.render();
+        fleet.render();
+        //laser.render();
 
         batch.end();
     }
-
 
 
     @Override

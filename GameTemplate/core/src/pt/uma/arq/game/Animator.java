@@ -20,11 +20,6 @@ public class Animator {
     // A variable for tracking elapsed time for the animation
     float stateTime;
 
-    // not needed
-    public Animator(){
-
-    }
-
     public Animator(SpriteBatch batch, String path, int columns, int rows) {
         this.spriteBatch = batch;
         this.FRAME_COLS = columns;

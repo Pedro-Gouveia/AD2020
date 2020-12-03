@@ -3,19 +3,13 @@ package pt.uma.arq.entities;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pt.uma.arq.game.Animator;
 
+import java.awt.*;
+
 public class SmallShip extends Ship{
 
-    public SmallShip(SpriteBatch batch){
+
+    public SmallShip(int x, int y, int attackValue, SpriteBatch batch){
+        super(x,y,attackValue);
         animator = new Animator(batch, "enemy-small.png", 2, 1);
-        attackValue = 5;
-    }
-
-
-    public void create(){
-        animator.create();
-    }
-
-    public void render(){
-        animator.render(x,y);
     }
 }
