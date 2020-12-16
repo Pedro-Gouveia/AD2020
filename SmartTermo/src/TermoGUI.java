@@ -49,23 +49,25 @@ public class TermoGUI extends JFrame{
         this.tempUnit = "c";
 
         this.tempDesejada = 24;
-        this.jLabelTempDesejada.setText(Float.toString(tempDesejada) + " ºC");
+        this.jLabelTempDesejada.setText((tempDesejada) + " ºC");
 
-        this.tempAtual = 22;
+        this.tempAtual = 26;
         this.jLabelTempAtual.setText(Float.toString(tempAtual));
+
+        this.tempDesejadaFahrenheit = convertToF(tempDesejada);
 
         jLabelPlusTemp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (tempUnit == "c") {
                     tempDesejada += 0.5;
-                    tempDesejadaFahrenheit = (float) ((tempDesejada) * 1.8 +32);
-                    jLabelTempDesejada.setText(Float.toString(tempDesejada) + " ºC");
+                    tempDesejadaFahrenheit = convertToF(tempDesejada);
+                    jLabelTempDesejada.setText((tempDesejada) + " ºC");
 
                 } else if (tempUnit == "f"){
-                    tempDesejadaFahrenheit += (0.5 * 1.8) +32;
-                    tempDesejada = (float) ((tempDesejadaFahrenheit - 32)/1.8);
-                    jLabelTempDesejada.setText(Float.toString(tempDesejadaFahrenheit) + " ºF");
+                    tempDesejadaFahrenheit += convertToF((float) 0.5);
+                    tempDesejada = convertToC(tempDesejadaFahrenheit);
+                    jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
                 }
             }
         });
@@ -76,13 +78,13 @@ public class TermoGUI extends JFrame{
 
                 if (tempUnit == "c") {
                     tempDesejada -= 0.5;
-                    tempDesejadaFahrenheit = (float) ((tempDesejada) * 1.8 +32);
-                    jLabelTempDesejada.setText(Float.toString(tempDesejada) + " ºC");
+                    tempDesejadaFahrenheit = convertToF(tempDesejada);
+                    jLabelTempDesejada.setText((tempDesejada) + " ºC");
 
                 } else if (tempUnit == "f"){
-                    tempDesejadaFahrenheit -= (0.5 * 1.8) +32;
-                    tempDesejada = (float) ((tempDesejadaFahrenheit - 32)/1.8);
-                    jLabelTempDesejada.setText(Float.toString(tempDesejadaFahrenheit) + " ºF");
+                    tempDesejadaFahrenheit -= convertToF((float) 0.5);
+                    tempDesejada = convertToC(tempDesejadaFahrenheit);
+                    jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
                 }
             }
         });
@@ -91,14 +93,13 @@ public class TermoGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (tempUnit == "c") {
-                    tempDesejadaFahrenheit = (float) ((tempDesejada) * 1.8 +32);
-                    jLabelTempDesejada.setText(Float.toString(tempDesejadaFahrenheit) + " ºF");
-                    jLabelLog.append("Converteu de Celsius para Fahrenheit." + "\n");
+                    jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
+                    appendLog("Converteu de Celsius para Fahrenheit.");
                     tempUnit = "f";
 
                 } else if (tempUnit == "f"){
-                    jLabelTempDesejada.setText(Float.toString(tempDesejada) + " ºC");
-                    jLabelLog.append("Converteu de Fahrenheit para Celsius." + "\n");
+                    jLabelTempDesejada.setText((tempDesejada)+ " ºC");
+                    appendLog("Fahrenheit de Celsius para Celsius.");
                     tempUnit = "c";
                 }
             }
@@ -116,9 +117,25 @@ public class TermoGUI extends JFrame{
         super();
     }
     */
+
+
+    public void appendLog(String text){
+        jLabelLog.append(text + "\n");
+    }
+
+    public float convertToF(float temp){
+        return (float) (temp * 1.8 +32);
+    }
+
+    public float convertToC(float temp){
+        return (float) ((temp - 32)/1.8);
+    }
+
     public void setTermoStatus(){
         if (tempAtual < tempDesejada){
             jLabelSatus.setText("ON");
+        } else {
+            jLabelSatus.setText("OFF");
         }
     }
 
