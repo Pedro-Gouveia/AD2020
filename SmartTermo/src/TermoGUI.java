@@ -51,7 +51,7 @@ public class TermoGUI extends JFrame{
         this.tempDesejada = 24;
         this.jLabelTempDesejada.setText((tempDesejada) + " ºC");
 
-        this.tempAtual = 26;
+        this.tempAtual = 22;
         this.jLabelTempAtual.setText(Float.toString(tempAtual));
 
         this.tempDesejadaFahrenheit = convertToF(tempDesejada);
@@ -59,14 +59,12 @@ public class TermoGUI extends JFrame{
         jLabelPlusTemp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                tempDesejada += 0.5;
                 if (tempUnit == "c") {
-                    tempDesejada += 0.5;
-                    tempDesejadaFahrenheit = convertToF(tempDesejada);
                     jLabelTempDesejada.setText((tempDesejada) + " ºC");
 
                 } else if (tempUnit == "f"){
-                    tempDesejadaFahrenheit += convertToF((float) 0.5);
-                    tempDesejada = convertToC(tempDesejadaFahrenheit);
+                    tempDesejadaFahrenheit = convertToF(tempDesejada);
                     jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
                 }
             }
@@ -75,15 +73,12 @@ public class TermoGUI extends JFrame{
         jLabelMinusTemp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                tempDesejada -= 0.5;
                 if (tempUnit == "c") {
-                    tempDesejada -= 0.5;
-                    tempDesejadaFahrenheit = convertToF(tempDesejada);
                     jLabelTempDesejada.setText((tempDesejada) + " ºC");
 
                 } else if (tempUnit == "f"){
-                    tempDesejadaFahrenheit -= convertToF((float) 0.5);
-                    tempDesejada = convertToC(tempDesejadaFahrenheit);
+                    tempDesejadaFahrenheit = convertToF(tempDesejada);
                     jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
                 }
             }
@@ -125,10 +120,6 @@ public class TermoGUI extends JFrame{
 
     public float convertToF(float temp){
         return (float) (temp * 1.8 +32);
-    }
-
-    public float convertToC(float temp){
-        return (float) ((temp - 32)/1.8);
     }
 
     public void setTermoStatus(){
