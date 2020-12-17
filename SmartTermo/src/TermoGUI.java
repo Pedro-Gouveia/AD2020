@@ -77,6 +77,7 @@ public class TermoGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 tempDesejada += 0.5;
                 setTempLabel(jLabelTempDesejada, tempDesejada);
+                appendLog("Aumentou a temperatura desejada.");
             }
         });
 
@@ -85,6 +86,7 @@ public class TermoGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 tempDesejada -= 0.5;
                 setTempLabel(jLabelTempDesejada, tempDesejada);
+                appendLog("Diminuiu a temperatura desejada.");
             }
         });
 
@@ -93,12 +95,12 @@ public class TermoGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 if (tempUnit == "C") {
                     tempUnit = "F";
-                    jLabelTempDesejada.setText(convertToF(tempDesejada) + " º" + tempUnit);
+                    setTempLabel(jLabelTempDesejada, tempDesejada);
                     appendLog("Converteu de Celsius para Fahrenheit.");
 
                 } else {
                     tempUnit = "C";
-                    jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
+                    setTempLabel(jLabelTempDesejada, tempDesejada);
                     appendLog("Converteu de Fahrenheit para Celsius.");
                 }
             }
