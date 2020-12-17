@@ -26,15 +26,8 @@ public class TermoGUI extends JFrame{
 
     private float tempDesejada;
     private float tempAtual;
-    private float tempDesejadaFahrenheit;
-    private float tempAtualFahrenheit;
     private LocalDate dataAtual;
     private String tempUnit;
-
-    /*
-    private Random rand = new Random();
-    double prob = rand.nextDouble();
-    */
 
 
     public TermoGUI(String title){
@@ -46,26 +39,24 @@ public class TermoGUI extends JFrame{
         this.dataAtual = LocalDate.now();
         this.jLabelDate.setText(String.valueOf(dataAtual));
 
-        this.tempUnit = "c";
+        this.tempUnit = "C";
 
         this.tempDesejada = 24;
-        this.jLabelTempDesejada.setText((tempDesejada) + " ºC");
+        this.jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
 
         this.tempAtual = 22;
         this.jLabelTempAtual.setText(Float.toString(tempAtual));
 
-        this.tempDesejadaFahrenheit = convertToF(tempDesejada);
 
         jLabelPlusTemp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tempDesejada += 0.5;
-                if (tempUnit == "c") {
-                    jLabelTempDesejada.setText((tempDesejada) + " ºC");
+                if (tempUnit == "C") {
+                    jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
 
-                } else if (tempUnit == "f"){
-                    tempDesejadaFahrenheit = convertToF(tempDesejada);
-                    jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
+                } else {
+                    jLabelTempDesejada.setText(convertToF(tempDesejada) + " º" + tempUnit);
                 }
             }
         });
@@ -74,12 +65,11 @@ public class TermoGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 tempDesejada -= 0.5;
-                if (tempUnit == "c") {
-                    jLabelTempDesejada.setText((tempDesejada) + " ºC");
+                if (tempUnit == "C") {
+                    jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
 
-                } else if (tempUnit == "f"){
-                    tempDesejadaFahrenheit = convertToF(tempDesejada);
-                    jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
+                } else {
+                    jLabelTempDesejada.setText(convertToF(tempDesejada) + " º" + tempUnit);
                 }
             }
         });
@@ -87,15 +77,15 @@ public class TermoGUI extends JFrame{
         jLabelConvertTemp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (tempUnit == "c") {
-                    jLabelTempDesejada.setText((tempDesejadaFahrenheit) + " ºF");
+                if (tempUnit == "C") {
+                    tempUnit = "F";
+                    jLabelTempDesejada.setText(convertToF(tempDesejada) + " º" + tempUnit);
                     appendLog("Converteu de Celsius para Fahrenheit.");
-                    tempUnit = "f";
 
-                } else if (tempUnit == "f"){
-                    jLabelTempDesejada.setText((tempDesejada)+ " ºC");
+                } else {
+                    tempUnit = "C";
+                    jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
                     appendLog("Fahrenheit de Celsius para Celsius.");
-                    tempUnit = "c";
                 }
             }
         });
@@ -104,6 +94,7 @@ public class TermoGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 jLabelLog.setText(null);
             }
+
         });
     }
 
