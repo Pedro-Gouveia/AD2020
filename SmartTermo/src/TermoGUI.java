@@ -3,10 +3,10 @@ import org.w3c.dom.ls.LSOutput;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.TimerTask;
+import java.util.Timer;
 
 public class TermoGUI extends JFrame{
     private JPanel jPanelMain;
@@ -29,12 +29,36 @@ public class TermoGUI extends JFrame{
     private LocalDate dataAtual;
     private String tempUnit;
 
+    private TimerTask timerTask;
+    private Timer timer;
+
 
     public TermoGUI(String title){
         super(title);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.pack();
         this.setContentPane(jPanelMain);
+
+        timer = new Timer();
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                Random rand = new Random();
+                float prob = rand.nextFloat();
+
+                if (tempAtual < tempDesejada && prob <= 0.8){
+                    tempAtual += 0.5;
+                }
+
+                if (prob > .7){
+                    tempAtual -= 0.5;
+                }
+                jLabelTempAtual.setText(String.valueOf(tempAtual));
+                setTermoStatus();
+            }
+        };
+
+        timer.scheduleAtFixedRate(timerTask, 0, 1000);
 
         this.dataAtual = LocalDate.now();
         this.jLabelDate.setText(String.valueOf(dataAtual));
@@ -85,7 +109,7 @@ public class TermoGUI extends JFrame{
                 } else {
                     tempUnit = "C";
                     jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
-                    appendLog("Fahrenheit de Celsius para Celsius.");
+                    appendLog("Converteu de Fahrenheit para Celsius.");
                 }
             }
         });
