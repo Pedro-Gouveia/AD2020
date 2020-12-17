@@ -53,7 +53,7 @@ public class TermoGUI extends JFrame{
                 if (prob > .7){
                     tempAtual -= 0.5;
                 }
-                jLabelTempAtual.setText(String.valueOf(tempAtual));
+                setTempLabel(jLabelTempAtual, tempAtual);
                 setTermoStatus();
             }
         };
@@ -76,12 +76,7 @@ public class TermoGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 tempDesejada += 0.5;
-                if (tempUnit == "C") {
-                    jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
-
-                } else {
-                    jLabelTempDesejada.setText(convertToF(tempDesejada) + " º" + tempUnit);
-                }
+                setTempLabel(jLabelTempDesejada, tempDesejada);
             }
         });
 
@@ -89,12 +84,7 @@ public class TermoGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 tempDesejada -= 0.5;
-                if (tempUnit == "C") {
-                    jLabelTempDesejada.setText(tempDesejada + " º" + tempUnit);
-
-                } else {
-                    jLabelTempDesejada.setText(convertToF(tempDesejada) + " º" + tempUnit);
-                }
+                setTempLabel(jLabelTempDesejada, tempDesejada);
             }
         });
 
@@ -128,6 +118,13 @@ public class TermoGUI extends JFrame{
     }
     */
 
+    public void setTempLabel(JLabel label, float temp){
+        if (tempUnit == "C") {
+            label.setText(temp + " º" + tempUnit);
+        } else {
+            label.setText(convertToF(temp) + " º" + tempUnit);
+        }
+    }
 
     public void appendLog(String text){
         jLabelLog.append(text + "\n");

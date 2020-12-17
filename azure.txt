@@ -1,0 +1,2 @@
+az iot hub device-identity create --hub-name ctesp-tpsi-arqd-2019419--device-id MyJavaDevice
+az iot hub device-identity show-connection-string --hub-name ctesp-tpsi-arqd-2019419 --device-id MyJavaDevice --output table
