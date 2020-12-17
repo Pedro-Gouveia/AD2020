@@ -90,27 +90,30 @@ public class TermoGUI extends JFrame{
             }
         });
 
+
         jLabelConvertTemp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (tempUnit == "C") {
                     tempUnit = "F";
                     setTempLabel(jLabelTempDesejada, tempDesejada);
+                    jLabelConvertTemp.setText("Converter para Celsius");
                     appendLog("Converteu de Celsius para Fahrenheit.");
 
                 } else {
                     tempUnit = "C";
                     setTempLabel(jLabelTempDesejada, tempDesejada);
+                    jLabelConvertTemp.setText("Converter para Fahrenheit");
                     appendLog("Converteu de Fahrenheit para Celsius.");
                 }
             }
         });
+
         JLabelCleatLog.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jLabelLog.setText(null);
             }
-
         });
     }
 
