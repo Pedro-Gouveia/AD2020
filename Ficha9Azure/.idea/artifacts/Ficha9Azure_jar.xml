@@ -1,0 +1,58 @@
+<component name="ArtifactManager">
+  <artifact name="Ficha9Azure:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Ficha9Azure_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Ficha9Azure.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/IoTDevice/src/main/resources/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="IoTDevice" />
+        <element id="module-output" name="IoTReader" />
+      </element>
+      <element id="library" level="project" name="Maven: org.apache.qpid:proton-j:0.25.0" />
+      <element id="library" level="project" name="Maven: com.azure:azure-core:1.5.0" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jnr-constants:0.9.9" />
+      <element id="library" level="project" name="Maven: com.microsoft.azure:azure-storage:2.2.0" />
+      <element id="library" level="project" name="Maven: org.bouncycastle:bcmail-jdk15on:1.53" />
+      <element id="library" level="project" name="Maven: org.ow2.asm:asm:5.0.3" />
+      <element id="library" level="project" name="Maven: com.azure:azure-messaging-eventhubs:5.1.0" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.2.3" />
+      <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.53" />
+      <element id="library" level="project" name="Maven: org.ow2.asm:asm-commons:5.0.3" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jnr-unixsocket:0.19" />
+      <element id="library" level="project" name="Maven: com.microsoft.azure.sdk.iot:iot-device-client:1.16.0" />
+      <element id="library" level="project" name="Maven: com.microsoft.azure:qpid-proton-j-extensions:1.2.3" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jffi:1.2.15" />
+      <element id="library" level="project" name="Maven: org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0" />
+      <element id="library" level="project" name="Maven: com.microsoft.azure.sdk.iot:iot-deps:0.8.1" />
+      <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+      <element id="library" level="project" name="Maven: com.azure:azure-core-amqp:1.1.2" />
+      <element id="library" level="project" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.53" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jnr-x86asm:1.0.2" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jnr-enxio:0.17" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jnr-ffi:2.1.4" />
+      <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.3.2" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.10.1" />
+      <element id="library" level="project" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.1" />
+      <element id="library" level="project" name="Maven: org.ow2.asm:asm-util:5.0.3" />
+      <element id="library" level="project" name="Maven: org.reactivestreams:reactive-streams:1.0.3" />
+      <element id="library" level="project" name="Maven: io.netty:netty-tcnative-boringssl-static:2.0.29.Final" />
+      <element id="library" level="project" name="Maven: org.ow2.asm:asm-tree:5.0.3" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.1" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.10.1" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jnr-posix:3.0.45" />
+      <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.3.1" />
+      <element id="library" level="project" name="Maven: com.fasterxml.woodstox:woodstox-core:6.0.2" />
+      <element id="library" level="project" name="Maven: com.microsoft.azure.sdk.iot.provisioning.security:security-provider:1.2.0" />
+      <element id="library" level="project" name="Maven: org.ow2.asm:asm-analysis:5.0.3" />
+      <element id="library" level="project" name="Maven: com.github.jnr:jffi:native:1.2.15" />
+      <element id="library" level="project" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2" />
+      <element id="library" level="project" name="Maven: io.projectreactor:reactor-core:3.3.5.RELEASE" />
+      <element id="library" level="project" name="Maven: org.codehaus.woodstox:stax2-api:4.2" />
+      <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.1" />
+      <element id="library" level="project" name="Maven: org.glassfish:javax.json:1.0.4" />
+    </root>
+  </artifact>
+</component>
