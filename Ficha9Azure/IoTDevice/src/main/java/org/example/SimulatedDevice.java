@@ -18,10 +18,15 @@ public class SimulatedDevice {
     private static IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
     private static DeviceClient client;
 
+
     public SimulatedDevice() throws URISyntaxException, IOException {
         // Connect to the IoT hub.
         client = new DeviceClient(connString, protocol);
         client.open();
+
+        // Register to receive direct method calls.
+        client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
+
         System.out.println("Device connected to hub!");
     }
 

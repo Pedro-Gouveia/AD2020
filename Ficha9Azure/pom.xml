@@ -11,6 +11,7 @@
   <modules>
     <module>IoTDevice</module>
     <module>IoTReader</module>
+    <module>IoTController</module>
   </modules>
 
   <name>Ficha9Azure</name>
