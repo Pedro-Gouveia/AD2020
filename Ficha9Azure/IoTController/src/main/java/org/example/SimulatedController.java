@@ -17,11 +17,12 @@ public class SimulatedController {
     public static final String deviceId = "MyJavaDevice";
 
     // Name of direct method and payload.
-    public static final String methodName = "SetTelemetryInterval";
-    public static final int payload = 10; // Number of seconds for telemetry interval.
+    // public static final String methodName = "SetTelemetryInterval";
+    // public static final int payload = 10; // Number of seconds for telemetry interval.
 
-    public static final String methodNameHeater = "SetHeaterOn";
-    public static final boolean status = true;
+    public static final String setAlarmOn = "setAlarmOn";
+    public static final String setAlarmOff = "setAlarmOff";
+    public static final boolean alarmStatus = false;
 
     public static final Long responseTimeout = TimeUnit.SECONDS.toSeconds(30);
     public static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
@@ -36,7 +37,9 @@ public class SimulatedController {
             // Call the direct method.
             //MethodResult result = methodClient.invoke(deviceId, methodName, responseTimeout, connectTimeout, payload);
 
-            MethodResult result = methodClient.invoke(deviceId, methodNameHeater, responseTimeout, connectTimeout, status);
+            MethodResult result = methodClient.invoke(deviceId, setAlarmOn, responseTimeout, connectTimeout, alarmStatus);
+
+
 
             if (result == null) {
                 throw new IOException("Direct method invoke returns null");

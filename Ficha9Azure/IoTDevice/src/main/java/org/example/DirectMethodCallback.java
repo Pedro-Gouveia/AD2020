@@ -11,21 +11,12 @@ public class DirectMethodCallback implements DeviceMethodCallback
     private static final int INVALID_PARAMETER = 400;
 
 
-    private static int telemetryInterval = 1000;
-    private static boolean heaterState = false;
+    private final SimulatedDevice simulatedDevice;
 
-    private void setTelemetryInterval(int interval)
-    {
-        System.out.println("Direct method # Setting telemetry interval (seconds): " + interval);
-        telemetryInterval = interval * 1000;
+    public DirectMethodCallback(SimulatedDevice simulatedDevice) {
+        this.simulatedDevice = simulatedDevice;
     }
 
-    private void SetHeaterOn(boolean state) {
-
-        System.out.println("Direct method # Setting heater: " + state);
-        heaterState = state;
-
-    }
 
     @Override
     public DeviceMethodData call(String methodName, Object methodData, Object context)
@@ -41,7 +32,7 @@ public class DirectMethodCallback implements DeviceMethodCallback
                     int status = METHOD_SUCCESS;
                     state = Boolean.parseBoolean(payload);
                     System.out.println(payload);
-                    SetHeaterOn(state);
+                    simulatedDevice.setAlarmOn(state);
                     deviceMethodData = new DeviceMethodData(status, "Executed direct method " + methodName);
                 } catch (NumberFormatException e) {
                     int status = INVALID_PARAMETER;
@@ -50,14 +41,14 @@ public class DirectMethodCallback implements DeviceMethodCallback
                 break;
             }
 
-            case "SetTelemetryInterval" :
-            {
-                int interval;
+            case "SetHeaterOff": {
+
+                boolean state;
                 try {
                     int status = METHOD_SUCCESS;
-                    interval = Integer.parseInt(payload);
+                    state = Boolean.parseBoolean(payload);
                     System.out.println(payload);
-                    setTelemetryInterval(interval);
+                    simulatedDevice.setAlarmOff(state);
                     deviceMethodData = new DeviceMethodData(status, "Executed direct method " + methodName);
                 } catch (NumberFormatException e) {
                     int status = INVALID_PARAMETER;

@@ -6,6 +6,7 @@ import com.microsoft.azure.sdk.iot.device.Message;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,6 +19,7 @@ public class SimulatedDevice {
     private static IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
     private static DeviceClient client;
 
+    private static boolean alarmStatus = false;
 
     public SimulatedDevice() throws URISyntaxException, IOException {
         // Connect to the IoT hub.
@@ -25,9 +27,23 @@ public class SimulatedDevice {
         client.open();
 
         // Register to receive direct method calls.
-        client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
+        client.subscribeToDeviceMethod(new DirectMethodCallback(this), null, new DirectMethodStatusCallback(), null);
 
         System.out.println("Device connected to hub!");
+    }
+
+    public void setAlarmOn(boolean state) {
+
+        System.out.println("Direct method # Setting heater: " + state);
+        alarmStatus = state;
+
+    }
+
+    public void setAlarmOff(boolean state) {
+
+        System.out.println("Direct method # Setting heater: " + state);
+        alarmStatus = state;
+
     }
 
     public void start() {
@@ -46,7 +62,7 @@ public class SimulatedDevice {
     }
 
     private void sendMessage() throws InterruptedException {
-        TelemetryDataPoint data = new TelemetryDataPoint(25, 70);
+        TelemetryDataPoint data = new TelemetryDataPoint(25, new Date(), false, false);
         // Converter para JSON
         String dataJson = data.serialize();
         Message msg = new Message(dataJson);

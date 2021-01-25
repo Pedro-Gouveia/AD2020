@@ -3,6 +3,7 @@ package org.example;
 import com.azure.messaging.eventhubs.EventHubClientBuilder;
 import com.azure.messaging.eventhubs.EventHubConsumerAsyncClient;
 
+
 import javax.swing.*;
 import java.io.IOException;
 
@@ -71,9 +72,10 @@ public class TelemetryReaderFrame extends JFrame{
                             partitionEvent.getPartitionContext().getPartitionId(), partitionEvent.getData().getBodyAsString()));
 
                     // Falta passar para a TextArea
-                    System.out.printf("%nApplication properties (set by device):%n%s", partitionEvent.getData().getProperties());
-                    System.out.printf("%nSystem properties (set by IoT Hub):%n%s",
-                            partitionEvent.getData().getSystemProperties());
+                    //System.out.printf("%nApplication properties (set by device):%n%s", partitionEvent.getData().getProperties());
+
+                    //System.out.printf("%nSystem properties (set by IoT Hub):%n%s",
+                    //        partitionEvent.getData().getSystemProperties());
                     
                 }, ex -> {
                     System.out.println("Error receiving events " + ex);

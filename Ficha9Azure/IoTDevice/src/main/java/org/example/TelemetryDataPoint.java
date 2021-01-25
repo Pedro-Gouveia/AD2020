@@ -2,14 +2,21 @@ package org.example;
 
 import com.google.gson.Gson;
 
+import java.util.Date;
+
 public class TelemetryDataPoint {
 
-    public double temperature;
-    public double humidity;
+    public int distance;
+    public Date date;
+    public boolean alarmOn;
+    public boolean intruderDetected;
 
-    public TelemetryDataPoint(double temperature, double humidity) {
-        this.temperature = temperature;
-        this.humidity = humidity;
+    public TelemetryDataPoint(int distance, Date date, boolean alarmOn, boolean intruderDetected) {
+
+        this.distance = distance;
+        this.date = date;
+        this.alarmOn = alarmOn;
+        this.intruderDetected = intruderDetected;
     }
 
     // Serialize object to JSON format.
