@@ -40,7 +40,6 @@ public class SimulatedController {
             MethodResult result = methodClient.invoke(deviceId, setAlarmOn, responseTimeout, connectTimeout, alarmStatus);
 
 
-
             if (result == null) {
                 throw new IOException("Direct method invoke returns null");
             }

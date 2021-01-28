@@ -1,19 +1,21 @@
 Manifest-Version: 1.0
 Main-Class: org.example.SimulatedDevice
-Class-Path: proton-j-0.25.0.jar azure-core-1.5.0.jar slf4j-api-1.7.25.ja
- r jnr-constants-0.9.9.jar azure-storage-2.2.0.jar bcmail-jdk15on-1.53.j
- ar asm-5.0.3.jar azure-messaging-eventhubs-5.1.0.jar jackson-core-2.2.3
- .jar bcprov-jdk15on-1.53.jar asm-commons-5.0.3.jar jnr-unixsocket-0.19.
- jar iot-device-client-1.16.0.jar qpid-proton-j-extensions-1.2.3.jar jff
- i-1.2.15.jar org.eclipse.paho.client.mqttv3-1.2.0.jar iot-deps-0.8.1.ja
- r commons-codec-1.10.jar azure-core-amqp-1.1.2.jar bcpkix-jdk15on-1.53.
- jar jnr-x86asm-1.0.2.jar jnr-enxio-0.17.jar jnr-ffi-2.1.4.jar commons-l
- ang3-3.3.2.jar jackson-module-jaxb-annotations-2.10.1.jar jakarta.activ
- ation-api-1.2.1.jar jackson-databind-2.10.1.jar asm-util-5.0.3.jar reac
- tive-streams-1.0.3.jar netty-tcnative-boringssl-static-2.0.29.Final.jar
-  asm-tree-5.0.3.jar jackson-annotations-2.10.1.jar jackson-dataformat-x
- ml-2.10.1.jar jnr-posix-3.0.45.jar gson-2.3.1.jar woodstox-core-6.0.2.j
- ar security-provider-1.2.0.jar asm-analysis-5.0.3.jar jffi-1.2.15-nativ
- e.jar jakarta.xml.bind-api-2.3.2.jar reactor-core-3.3.5.RELEASE.jar sta
- x2-api-4.2.jar jackson-datatype-jsr310-2.10.1.jar javax.json-1.0.4.jar
+Class-Path: azure-core-amqp-1.1.2.jar jnr-enxio-0.17.jar jnr-x86asm-1.0.
+ 2.jar jnr-posix-3.0.45.jar proton-j-0.25.0.jar azure-messaging-eventhub
+ s-5.1.0.jar jackson-datatype-jsr310-2.10.1.jar security-provider-1.2.0.
+ jar commons-lang3-3.3.2.jar jakarta.activation-api-1.2.1.jar commons-co
+ dec-1.6.jar jackson-dataformat-xml-2.10.1.jar slf4j-api-1.7.25.jar asm-
+ commons-5.0.3.jar jffi-1.2.15-native.jar stax2-api-4.2.jar reactor-core
+ -3.3.5.RELEASE.jar jackson-annotations-2.10.1.jar jackson-core-2.2.3.ja
+ r azure-storage-2.2.0.jar iot-deps-0.5.0.jar jnr-constants-0.9.9.jar gs
+ on-2.3.1.jar bcprov-jdk15on-1.53.jar jackson-module-jaxb-annotations-2.
+ 10.1.jar asm-5.0.3.jar commons-codec-1.10.jar asm-util-5.0.3.jar jnr-un
+ ixsocket-0.19.jar iot-service-client-1.13.0.jar iot-deps-0.8.1.jar org.
+ eclipse.paho.client.mqttv3-1.2.0.jar reactive-streams-1.0.3.jar bcpkix-
+ jdk15on-1.53.jar javax.json-1.0.4.jar bcmail-jdk15on-1.53.jar iot-devic
+ e-client-1.16.0.jar jnr-ffi-2.1.4.jar jakarta.xml.bind-api-2.3.2.jar as
+ m-analysis-5.0.3.jar qpid-proton-j-extensions-1.2.3.jar pi4j-core-1.2.j
+ ar asm-tree-5.0.3.jar netty-tcnative-boringssl-static-2.0.29.Final.jar 
+ jffi-1.2.15.jar jackson-databind-2.10.1.jar woodstox-core-6.0.2.jar azu
+ re-core-1.5.0.jar
 

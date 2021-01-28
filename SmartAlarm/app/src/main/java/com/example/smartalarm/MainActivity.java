@@ -1,6 +1,8 @@
 package com.example.smartalarm;
 
 import android.os.Bundle;
+import android.widget.Switch;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.azure.messaging.eventhubs.EventHubClientBuilder;
@@ -23,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String IOT_HUB_SAS_KEY_NAME = "service";
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        Runnable runnable = new Runnable(){
-            public void run(){
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TextView textView = findViewById(R.id.textView);
+        Switch toggleAlarm = findViewById(R.id.switch1);
+
+        Runnable runnable = new Runnable() {
+            public void run() {
                 String eventHubCompatibleConnectionString = String.format(EH_COMPATIBLE_CONNECTION_STRING_FORMAT,
                         EVENT_HUBS_COMPATIBLE_ENDPOINT, EVENT_HUBS_COMPATIBLE_PATH, IOT_HUB_SAS_KEY_NAME, IOT_HUB_SAS_KEY);
 
@@ -37,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
                 client.receive(false) // set this to false to read only the newly available events
                         .subscribe(partitionEvent -> {
-                                   String s = partitionEvent.getData().getBodyAsString();
+                            String str = partitionEvent.getData().getBodyAsString();
                             textView.post(new Runnable() {
-                                public void run() {textView.setText(s);}
+                                public void run() {
+                                    textView.setText(str);
+                                }
                             });
 
                         }, ex -> {

@@ -3,6 +3,8 @@ package org.example;
 import com.microsoft.azure.sdk.iot.device.DeviceClient;
 import com.microsoft.azure.sdk.iot.device.IotHubClientProtocol;
 import com.microsoft.azure.sdk.iot.device.Message;
+import com.pi4j.io.gpio.*;
+import com.pi4j.wiringpi.Gpio;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,9 +22,28 @@ public class SimulatedDevice {
     private static DeviceClient client;
 
     private static boolean alarmStatus = false;
+    private UltraSonicSensor sonic;
+
+    private GpioController gpio;
+    private GpioPinDigitalOutput led;
+
 
     public SimulatedDevice() throws URISyntaxException, IOException {
+       /*
+        sonic = new UltraSonicSensor(
+                0,//ECO PIN (physical 11)
+                7,//TRIG PIN (pysical 22)
+                1000,//REJECTION_START ; long (nano seconds)
+                23529411 //REJECTION_TIME ; long (nano seconds)
+        );
+
+        */
+
+
         // Connect to the IoT hub.
+        gpio = GpioFactory.getInstance();
+        led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
+
         client = new DeviceClient(connString, protocol);
         client.open();
 
@@ -32,17 +53,17 @@ public class SimulatedDevice {
         System.out.println("Device connected to hub!");
     }
 
-    public void setAlarmOn(boolean state) {
+    public void setAlarmOn(boolean status) {
 
-        System.out.println("Direct method # Setting heater: " + state);
-        alarmStatus = state;
+        System.out.println("Direct method # Setting alarm: " + status);
+        alarmStatus = status;
 
     }
 
-    public void setAlarmOff(boolean state) {
+    public void setAlarmOff(boolean status) {
 
-        System.out.println("Direct method # Setting heater: " + state);
-        alarmStatus = state;
+        System.out.println("Direct method # Setting alarm: " + status);
+        alarmStatus = status;
 
     }
 
@@ -54,6 +75,8 @@ public class SimulatedDevice {
                     sendMessage();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         };
@@ -61,8 +84,23 @@ public class SimulatedDevice {
         timer.scheduleAtFixedRate(task, 0, 1000);
     }
 
-    private void sendMessage() throws InterruptedException {
-        TelemetryDataPoint data = new TelemetryDataPoint(25, new Date(), false, false);
+    private void sendMessage() throws Exception {
+        UltraSonicSensor sonic = new UltraSonicSensor(
+                0,//ECO PIN (physical 11)
+                7,//TRIG PIN (pysical 22)
+                1000,//REJECTION_START ; long (nano seconds)
+                23529411 //REJECTION_TIME ; long (nano seconds)
+        );
+
+        int distance = sonic.getDistance();
+
+        if (distance <= 50) {
+
+            led.setState(PinState.HIGH);
+        }
+
+        TelemetryDataPoint data = new TelemetryDataPoint(distance, new Date(), false, false);
+
         // Converter para JSON
         String dataJson = data.serialize();
         Message msg = new Message(dataJson);
